@@ -119,9 +119,11 @@ function setButtons(rosterTimes, start, rowCount){
 }
 
 function drawPie(percent){
+    // Initial variables
     var canvas = document.getElementById("punc-pie");
     var ctx = canvas.getContext('2d');
 
+    // Reset the canvas
     ctx.fillStyle = "white";
     ctx.fillRect(0, 0, 110, 110);
 
