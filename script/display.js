@@ -14,7 +14,7 @@ function display(data){
     showStats(stats, message);
 
     var count = 0;
-    var ticker = setInterval(redrawPie, 8);
+    var ticker = setInterval(redrawPie, 12);
     function redrawPie(){
         drawPie(count);
         count += 1;
