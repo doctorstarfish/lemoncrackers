@@ -13,6 +13,7 @@ function display(data){
     setButtons(rosterTimes, start, rowCount);
     showStats(stats, message);
 
+    // Pie chart animation
     var count = 0;
     var ticker = setInterval(redrawPie, 12);
     function redrawPie(){
@@ -88,7 +89,6 @@ function populateTable(rosterTimes, start, end){
         $(function () {
             $('[data-toggle="tooltip"]').tooltip();
         });
-
 
         // Add to page
         $('#rosterTable').get(0).appendChild(newRow);
