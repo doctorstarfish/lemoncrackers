@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>Punctuality</title>
+
+        <link rel='stylesheet' href='./style/style.css' />
+        <link rel='stylesheet' href='./style/tether.css' />
+        <link rel='stylesheet' href='./bootstrap/css/bootstrap.css' />
+        <link rel='stylesheet' href='./style/daterangepicker.css' />
+
+        <script src='./script/jquery-3.1.1.min.js'></script>
+        <script src='./script/tether.min.js'></script>
+        <script src='./bootstrap/js/bootstrap.min.js'></script>
+        <script src='./script/moment.min.js'></script>
+        <script src='./script/daterangepicker.js'></script>
+        <script src='./script/eventHandlers.js'></script>
+        <script src='./script/display.js'></script>
+        <script src='./script/punctual.js'></script>
+    </head>
+    <body>
+
+        <div id='container'>
+            <div id='header' class='bar'>
+                <div>
+                    <img src='mike.png' />
+                    <span>Mike</span>
+                </div>
+                <div>
+                    <input type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown"
+                    aria-haspop="true" aria-expanded="false" id='datepick' name="daterange"/>
+                </div>
+
+            </div>
+
+            <div id='content'>
+                <div id='content-summary'>
+                    <canvas width="110" height="110" id='punc-pie'></canvas>
+                    <div id="summary-text-wrap">
+                        <p id="summary-text">For clock ins and outs within 30 minutes of his roster, Mike is punctual <span id='punc-text'>80</span>% of the time. Time saved: 9 mins.</p>
+                    </div>
+
+                    <div id='content-boxes-wrap'>
+                        <div id='content-boxes'>
+                            <div class='content-box'>
+                                <span>Arrived Late</span>
+                                <span id='late-display'>0</span>
+                            </div>
+
+                            <div class='content-box'>
+                                <span>Punctual</span>
+                                <span id='punctual-display'>0</span>
+                            </div>
+
+                            <div class='content-box'>
+                                <span>Left Early</span>
+                                <span id='early-display'>0</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+
+                <div id='content-details'>
+                    <table class='table table-condensed'>
+                        <thead>
+                            <tr>
+                                <th>Day</th>
+                                <th>Rostered Start</th>
+                                <th>Actual Start</th>
+                                <th>Rostered Finish</th>
+                                <th>Actual Finish</th>
+                            </tr>
+                        </thead>
+                        <tbody id='rosterTable'></tbody>
+                    </table>
+                </div>
+            </div>
+
+            <div id='footer' class='bar'>
+                <div>
+                    <span>Show</span>
+                    <select class='form-control' id='shift-selector'>
+                        <option value='10'>10</option>
+                        <option value='25'>25</option>
+                        <option value='50'>50</option>
+                        <option value='100'>100</option>
+                        <option value='10000'>All</option>
+                    </select>
+                    <span>shifts</span>
+                </div>
+
+                <div class="btn-group" id='prev-next'>
+                  <button id='prev-button' type="button" class="btn btn-default" disabled="disabled">Previous</button>
+                  <button id='next-button' type="button" class="btn btn-default" disabled="disabled">Next</button>
+                </div>
+            </div>
+
+        </div>
+        <span id='showing'>Showing 1 to 5 of 5 shifts</span>
+
+    </body>
+</html>
