@@ -127,10 +127,12 @@ function drawPie(percent){
     ctx.fillStyle = "white";
     ctx.fillRect(0, 0, 110, 110);
 
+    // Draw base circle
     ctx.arc(55, 55, 55, 0, 2 * Math.PI, true);
     ctx.fillStyle = "#E9F6F6";
     ctx.fill();
 
+    // Draw pie circuit
     ctx.beginPath();
     ctx.moveTo(55, 55);
     ctx.arc(55, 55, 55, -Math.PI/2, (-Math.PI/2) + (percent)/100 * Math.PI * 2);
@@ -138,11 +140,13 @@ function drawPie(percent){
     ctx.lineTo(55, 55);
     ctx.fill();
 
+    // Draw white circle
     ctx.beginPath();
     ctx.arc(55, 55, 42, 0, Math.PI * 2);
     ctx.fillStyle = "#ffffff";
     ctx.fill();
 
+    // Draw percentage text
     ctx.fillStyle = "#00B3F1";
     ctx.font = "bold 38px sans-serif";
     ctx.textAlign = "center";
