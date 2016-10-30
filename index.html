@@ -4,10 +4,10 @@
         <meta charset="utf-8">
         <title>Punctuality</title>
 
-        <link rel='stylesheet' href='./style/style.css' />
         <link rel='stylesheet' href='./style/tether.css' />
         <link rel='stylesheet' href='./bootstrap/css/bootstrap.css' />
         <link rel='stylesheet' href='./style/daterangepicker.css' />
+        <link rel='stylesheet' href='./style/style.css' />
 
         <script src='./script/jquery-3.1.1.min.js'></script>
         <script src='./script/tether.min.js'></script>
@@ -24,11 +24,15 @@
             <div id='header' class='bar'>
                 <div>
                     <img src='mike.png' />
-                    <span>Mike</span>
+                    <span id='username'>Mike</span>
                 </div>
                 <div>
-                    <input type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown"
-                    aria-haspop="true" aria-expanded="false" id='datepick' name="daterange"/>
+
+                    <div id="datepick" class="pull-right" style="background: #fff; cursor: pointer; padding: 5px 10px; border: 1px solid #ccc; width: 100%">
+                        <i class="glyphicon glyphicon-calendar fa fa-calendar"></i>&nbsp;
+                        <span id="dateshown"></span> <b class="caret"></b>
+                    </div>
+
                 </div>
 
             </div>
@@ -37,7 +41,7 @@
                 <div id='content-summary'>
                     <canvas width="110" height="110" id='punc-pie'></canvas>
                     <div id="summary-text-wrap">
-                        <p id="summary-text">For clock ins and outs within 30 minutes of his roster, Mike is punctual <span id='punc-text'>80</span>% of the time. Time saved: 9 mins.</p>
+                        <p id="summary-text">For clock ins and outs within 5 minutes of his roster, Mike is punctual <span id='punc-text'>80</span>% of the time. Time lost: <span id='time-saved'></span> mins.</p>
                     </div>
 
                     <div id='content-boxes-wrap'>

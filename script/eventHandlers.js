@@ -1,6 +1,6 @@
 function nextButtonHandler(event){
     window.g.page += 1;
-    refresh();
+    display(false);
 }
 
 function prevButtonHandler(event){
@@ -8,12 +8,11 @@ function prevButtonHandler(event){
         window.g.page -= 1;
     }
 
-    refresh();
+    display(false);
 }
 
 function shiftSelectHandler(event){
-    console.log('chage');
     window.g.displayCap = parseInt(event.target.value);
 
-    refresh();
+    display(false);
 }

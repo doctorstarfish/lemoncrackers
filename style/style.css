@@ -42,10 +42,76 @@ body {
     float: left;
 }
 
-#header span {
+#username {
     float: left;
     line-height: 83px;
     vertical-align: middle;
+}
+
+/* date range picker */
+#header > div:last-child {
+    margin: 25px 25px;
+}
+
+#datepick {
+    background: #fff;
+    cursor: pointer;
+    padding: 5px 10px;
+    border: 1px solid #ccc;
+    width: 100%;
+    border-radius: 5px;
+}
+
+.daterangepicker {
+    padding: 30px 20px;
+}
+
+.daterangepicker.ltr .calendar.right {
+    margin-right: 40px;
+}
+
+.daterangepicker .ranges li {
+    color: #498DCC;
+    border: 0px;
+    background-color: white;
+    height: 30px;
+    padding-top: 6px;
+    -webkit-user-select: none;  /* Chrome all / Safari all */
+    -moz-user-select: none;     /* Firefox all */
+    -ms-user-select: none;
+    user-select: none;
+}
+
+.daterangepicker .ranges li:hover {
+    background-color: #498DCC;
+    color: white;
+}
+
+.daterangepicker .ranges li.active {
+    background-color: #498DCC;
+    color: white;
+}
+
+
+.daterangepicker .pickerwrap {
+    margin: 10px 4px 5px 4px;
+    width: 75px;
+    float: left;
+}
+
+.daterangepicker .input-mini {
+    font-size: 12px;
+    padding-left: 6px;
+    padding-top: 4px;
+    margin-top: 5px;
+}
+
+.daterangepicker .applyBtn {
+    float: left;
+    clear: both;
+    width: 160px;
+    margin-left:4px;
+    background-color: #55A5D7;
 }
 
 /* content */
@@ -116,11 +182,38 @@ body {
     margin-bottom: 0px;
 }
 
+.noshifts {
+    border: 0px;
+}
+
+.noshifts > td {
+    padding-top: 20px !important;
+    height: 60px !important;
+    color: #818181;
+
+}
+
 #content-details > table td{
     padding-left: 15px;
     padding-top: 8px;
     padding-bottom: 8px;
     height: 37px;
+}
+
+#content-details > table td:nth-child(1){
+    width: 20%;
+}
+#content-details > table td:nth-child(2){
+    width: 18%;
+}
+#content-details > table td:nth-child(3){
+    width: 22%;
+}
+#content-details > table td:nth-child(4){
+    width: 18%;
+}
+#content-details > table td:nth-child(5){
+    width: 22%;
 }
 
 #content-details > table tr {
