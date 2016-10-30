@@ -1,37 +1,50 @@
-function display(data){
-    rosterTimes = data[0];
-    stats = data[1];
+function display(){
+    rosterTimes = g.data[0];
+    stats = g.data[1];
 
     var rowCount = rosterTimes.length - g.displayCap * g.page;
     rowCount = Math.min(rowCount, g.displayCap);
 
     var start = g.page * g.displayCap;
-    var end = start + rowCount - 1;
+    var end = start + rowCount;
     var message = "Showing " + (start+1) + " to " + (start + rowCount) + " of " + rosterTimes.length + " shifts";
 
     populateTable(rosterTimes, start, end);
     setButtons(rosterTimes, start, rowCount);
     showStats(stats, message);
+}
 
-    // Pie chart animation
-    var count = 0;
-    var ticker = setInterval(redrawPie, 12);
-    function redrawPie(){
-        drawPie(count);
-        count += 1;
+function animatePie(){
+    return new Promise(function(resolve, reject){
 
-        if (count == stats.punctualPercent){
-            clearInterval(ticker);
+        // Pie chart animation
+        var count = 0;
+        var ticker = setInterval(redrawPie, 12);
+
+        function redrawPie(){
+            drawPie(count);
+            count += 1;
+
+            if (count > g.data[1].punctualPercent){
+                clearInterval(ticker);
+            }
         }
-    }
+
+        resolve();
+
+    });
 }
 
 function populateTable(rosterTimes, start, end){
     // Clear table
     $("#rosterTable").get(0).innerHTML = "";
 
+    if (start == end){
+        $('#rosterTable').get(0).innerHTML = "<tr class='noshifts'><td align='center' colspan='5'>The roster was empty over this period.</td></tr>";
+    }
+
     // Loop through data to add rows
-    for (var i = start; i <= end; i++){
+    for (var i = start; i < end; i++){
         var rosterObj = rosterTimes[i];
 
         // Make row elements
@@ -53,8 +66,8 @@ function populateTable(rosterTimes, start, end){
 
         // Fill content
         dateCell.innerHTML = rosterObj["date"].format("MMMM Do YYYY");
-        rosterStartCell.innerHTML = rosterObj["start"].format("h:mmA");
-        rosterFinishCell.innerHTML = rosterObj["finish"].format("h:mmA");
+        rosterStartCell.innerHTML = rosterObj["start"].format("h:mma");
+        rosterFinishCell.innerHTML = rosterObj["finish"].format("h:mma");
 
         actualStartCell.innerHTML = rosterObj["startStatus"];
         actualFinishCell.innerHTML = rosterObj["finishStatus"];
@@ -102,6 +115,7 @@ function showStats(stats, message){
     $("#early-display").get(0).innerHTML = stats.leaveEarly;
     $("#punctual-display").get(0).innerHTML = stats.punctual;
     $("#punc-text").get(0).innerHTML = stats.punctualPercent;
+    $("#time-saved").get(0).innerHTML = stats.timeSaved;
 }
 
 function setButtons(rosterTimes, start, rowCount){
